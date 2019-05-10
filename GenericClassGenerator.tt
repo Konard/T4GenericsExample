@@ -1,0 +1,21 @@
+﻿<#@ template language="C#" #>
+<#
+	if (string.IsNullOrWhiteSpace(ClassName))
+		ClassName = "$CLASS-NAME";
+	if (string.IsNullOrWhiteSpace(Namespace))
+		Namespace = "$NAMESPACE";
+	if (string.IsNullOrWhiteSpace(TypeParameter))
+		TypeParameter = "$TYPE-PARAMETER";
+#>
+namespace <#= Namespace #>
+{
+    public class <#= ClassName #> : IGeneric<<#= TypeParameter #>>
+    {
+        public <#= TypeParameter #> ReturnResult() => 1 + 3;
+    }
+}
+<#+
+public string ClassName { get; set; }
+public string Namespace { get; set; }
+public string TypeParameter { get; set; }
+#>
