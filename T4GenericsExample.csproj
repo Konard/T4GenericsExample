@@ -6,14 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="UInt16Class.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>UInt16Class.tt</DependentUpon>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="System.CodeDom" Version="4.5.0" />
   </ItemGroup>
 
@@ -31,16 +23,6 @@
 
   <ItemGroup>
     <None Update="GenericClassGenerator.tt">
-      <CustomToolNamespace></CustomToolNamespace>
-    </None>
-    <None Update="TextTemplate1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TextTemplate1.txt</LastGenOutput>
-    </None>
-    <None Update="TextTemplate1.txt">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>TextTemplate1.tt</DependentUpon>
     </None>
     <None Update="UInt16Class.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -50,15 +32,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UInt32Class.cs</LastGenOutput>
     </None>
-    <None Update="UInt32Class.txt">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>UInt32Class.tt</DependentUpon>
-    </None>
     <None Update="UInt64Class.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UInt64Class.cs</LastGenOutput>
-      <CustomToolNamespace>T4Example</CustomToolNamespace>
     </None>
     <None Update="UInt8Class.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -80,11 +56,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>UInt32Class.tt</DependentUpon>
-    </Compile>
-    <Compile Update="UInt64Class - Copy.cs">
-      <DependentUpon>UInt64Class - Copy.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Update="UInt64Class.cs">
       <DesignTime>True</DesignTime>
