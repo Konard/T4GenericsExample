@@ -1,3 +1,4 @@
+﻿
 namespace T4GenericsExample
 {
     public class UInt64Class : IGeneric<System.UInt64>

@@ -1,0 +1,32 @@
+﻿<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#+
+    public void Generate(string baseTemplatePath, IDictionary<string, string> parameters)
+    {
+        var template = File.ReadAllText(this.Host.ResolvePath(baseTemplatePath));
+
+        var sb = new StringBuilder();
+        sb.Append('<').Append('#').Append(' ');
+    
+        foreach (var parameter in parameters)
+                    sb.Append($"{parameter.Key} = {parameter.Value};");
+
+        sb.Append(' ').Append('#').Append('>');
+
+        template = template.Replace("<" + "#" + "#" + ">", sb.ToString());
+
+        this.Write(new Engine().ProcessTemplate(template, this.Host));
+    }
+
+    public string SurroundWithQuotes(string str)
+    {
+        return $"\"{str}\"";
+    }
+
+    public string GetTemplateName()
+    {
+        return Path.GetFileNameWithoutExtension(this.Host.TemplateFile).Replace(".Generated", "");
+    }
+#>

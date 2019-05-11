@@ -1,13 +1,14 @@
 ﻿<#@ template hostspecific="true" language="C#" #>
-<#@ import namespace="System.IO" #>
-<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
-<#@ output extension=".cs"#>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#@ include file="Generator.ttinclude" #>
 <#
-var template = File.ReadAllText(this.Host.ResolvePath("GenericClass.ttinclude"));
-
-template = template.Replace("$CLASS-NAME", Path.GetFileNameWithoutExtension(this.Host.TemplateFile).Replace(".Generated", ""));
-template = template.Replace("$NAMESPACE", "T4GenericsExample");
-template = template.Replace("$TYPE-PARAMETER", "System.UInt32");
-
-this.Write(new Engine().ProcessTemplate(template, this.Host));
+    var parameters = new Dictionary<string, string>()
+    {
+        { "Namespace", SurroundWithQuotes("T4GenericsExample") },
+        { "ClassName", SurroundWithQuotes(GetTemplateName()) },
+        { "TypeParameter", SurroundWithQuotes("System.UInt32") }
+    };
+ 
+    Generate("GenericClass.ttinclude", parameters);
 #>
