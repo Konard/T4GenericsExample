@@ -93,7 +93,7 @@
 
   <!-- T4 build support for .NET Core (Begin) -->
   
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildRuntimeType)'=='Full'">
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <!-- This is what will cause the templates to be transformed when the project is built (default is false) -->
     <TransformOnBuild>true</TransformOnBuild>
