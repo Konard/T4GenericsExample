@@ -1,5 +1,5 @@
 # T4GenericsExample
-Example of T4 generation of multiple versions of a generic interface.
+This example shows how to generate multiple generic interface implementations using T4 text templates.
 There is the `IGeneric<T>` interface.
 T4 is used to generate specific implementations of this interface for `UInt64`, `UInt32`, `UInt16` and `Byte` types.
 All implementation share single base template `GenericClassGenerator.tt` logic.
