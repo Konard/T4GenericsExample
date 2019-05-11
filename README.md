@@ -13,3 +13,6 @@ https://dotnet.microsoft.com/download
 ```
 dotnet run
 ```
+
+## Development process videos
+https://youtu.be/50VAmdqMN6k
