@@ -24,21 +24,21 @@
   <ItemGroup>
     <None Update="GenericClassGenerator.tt">
     </None>
-    <None Update="UInt16Class.tt">
+    <None Update="UInt16Class.Generated.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UInt16Class.cs</LastGenOutput>
+      <LastGenOutput>UInt16Class.Generated.cs</LastGenOutput>
     </None>
-    <None Update="UInt32Class.tt">
+    <None Update="UInt32Class.Generated.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UInt32Class.cs</LastGenOutput>
+      <LastGenOutput>UInt32Class.Generated.cs</LastGenOutput>
     </None>
-    <None Update="UInt64Class.tt">
+    <None Update="UInt64Class.Generated.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UInt64Class.cs</LastGenOutput>
+      <LastGenOutput>UInt64Class.Generated.cs</LastGenOutput>
     </None>
-    <None Update="UInt8Class.tt">
+    <None Update="UInt8Class.Generated.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UInt8Class.cs</LastGenOutput>
+      <LastGenOutput>UInt8Class.Generated.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
@@ -47,26 +47,65 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="UInt16Class.cs">
+    <Compile Update="UInt16Class.Generated.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>UInt16Class.tt</DependentUpon>
+      <DependentUpon>UInt16Class.Generated.tt</DependentUpon>
     </Compile>
-    <Compile Update="UInt32Class.cs">
+    <Compile Update="UInt32Class.Generated.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>UInt32Class.tt</DependentUpon>
+      <DependentUpon>UInt32Class.Generated.tt</DependentUpon>
     </Compile>
-    <Compile Update="UInt64Class.cs">
+    <Compile Update="UInt64Class.Generated.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>UInt64Class.tt</DependentUpon>
+      <DependentUpon>UInt64Class.Generated.tt</DependentUpon>
     </Compile>
-    <Compile Update="UInt8Class.cs">
+    <Compile Update="UInt8Class.Generated.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>UInt8Class.tt</DependentUpon>
+      <DependentUpon>UInt8Class.Generated.tt</DependentUpon>
     </Compile>
   </ItemGroup>
+
+  <!-- T4 build support for .NET Core (Begin) -->
+
+  <ItemGroup Condition="'$(MSBuildRuntimeType)'=='Core'">
+    <DotNetCliToolReference Include="T5.TextTransform.Tool" Version="1.1.0-*" />
+    <TextTemplate Include="**\*.Generated.tt" />
+    <Generated Include="**\*.Generated.cs" />
+  </ItemGroup>
+
+  <Target Name="TextTemplateTransform" BeforeTargets="BeforeBuild" Condition="'$(MSBuildRuntimeType)'=='Core'">
+    <ItemGroup>
+      <Compile Remove="**\*.cs" />
+    </ItemGroup>
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tt %(TextTemplate.Identity)" />
+    <ItemGroup>
+      <Compile Include="**\*.cs" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="TextTemplateClean" AfterTargets="Clean">
+    <Delete Files="@(Generated)" />
+  </Target>
+
+  <!-- T4 build support for .NET Core (Begin) -->
+  
+  <PropertyGroup>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <!-- This is what will cause the templates to be transformed when the project is built (default is false) -->
+    <TransformOnBuild>true</TransformOnBuild>
+    <!-- Set to true to force overwriting of read-only output files, e.g. if they're not checked out (default is false) -->
+    <OverwriteReadOnlyOutputFiles>true</OverwriteReadOnlyOutputFiles>
+    <!-- Set to false to transform files even if the output appears to be up-to-date (default is true)  -->
+    <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
+  </PropertyGroup>
+
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" Condition="'$(MSBuildRuntimeType)'=='Full'" />
+  <Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" Condition="'$(MSBuildRuntimeType)'=='Full'" />
+
+  <!-- T4 build support for Visual Studio (End) -->
 
 </Project>

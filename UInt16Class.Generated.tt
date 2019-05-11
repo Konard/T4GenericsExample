@@ -1,10 +1,11 @@
 ﻿<#@ template hostspecific="true" language="C#" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ output extension=".cs"#>
 <#
-var template = File.ReadAllText(this.Host.ResolvePath("GenericClassGenerator.tt"));
+var template = File.ReadAllText(this.Host.ResolvePath("GenericClass.ttinclude"));
 
-template = template.Replace("$CLASS-NAME", Path.GetFileNameWithoutExtension(this.Host.TemplateFile));
+template = template.Replace("$CLASS-NAME", Path.GetFileNameWithoutExtension(this.Host.TemplateFile).Replace(".Generated", ""));
 template = template.Replace("$NAMESPACE", "T4GenericsExample");
 template = template.Replace("$TYPE-PARAMETER", "System.UInt16");
 

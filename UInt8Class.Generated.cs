@@ -1,4 +1,4 @@
-﻿namespace T4GenericsExample
+namespace T4GenericsExample
 {
     public class UInt8Class : IGeneric<System.Byte>
     {
