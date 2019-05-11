@@ -91,9 +91,15 @@
     <Delete Files="@(Generated)" />
   </Target>
 
-  <!-- T4 build support for .NET Core (Begin) -->
+  <!-- T4 build support for .NET Core (End) -->
   
+<<<<<<< HEAD
   <PropertyGroup Condition="'$(MSBuildRuntimeType)'=='Full'">
+=======
+   <!-- T4 build support for Visual Studio (Begin) -->
+   
+  <PropertyGroup>
+>>>>>>> 4c535e0f3021c1d169cee36eb85baf9350e7cf6c
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <!-- This is what will cause the templates to be transformed when the project is built (default is false) -->
     <TransformOnBuild>true</TransformOnBuild>
