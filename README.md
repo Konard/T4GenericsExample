@@ -15,4 +15,4 @@ dotnet run
 ```
 
 ## Development process videos
-https://youtu.be/50VAmdqMN6k
+https://www.youtube.com/playlist?list=PLeYxH0Vd8louZqRXtRXm1X3HAEYcwR4ZQ
