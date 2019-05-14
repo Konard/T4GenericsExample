@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/konard/t4genericsexample/badge)](https://www.codefactor.io/repository/github/konard/t4genericsexample)
+
 # T4GenericsExample
 This example shows how to generate multiple generic interface implementations using T4 text templates.
 There is the `IGeneric<T>` interface.
