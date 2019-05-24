@@ -6,6 +6,8 @@ There is the `IGeneric<T>` interface.
 T4 is used to generate specific implementations of this interface for `UInt64`, `UInt32`, `UInt16` and `Byte` types.
 All implementations share single base template `GenericClass.ttinclude` logic.
 
+It is possible to achieve the same result using [C++/CLI template and .NET Framework 4.7.2](https://github.com/Konard/CppGenericsExample).
+
 ## Setup
 Requires .NET Core 2.2 SDK and Runtime.
 
