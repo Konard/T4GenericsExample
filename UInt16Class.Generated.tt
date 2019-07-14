@@ -5,9 +5,9 @@
 <#
     var parameters = new Dictionary<string, string>()
     {
-        { "Namespace", SurroundWithQuotes("T4GenericsExample") },
-        { "ClassName", SurroundWithQuotes(GetTemplateName()) },
-        { "TypeParameter", SurroundWithQuotes("System.UInt16") }
+        { "Namespace", "T4GenericsExample" },
+        { "ClassName", GetTemplateName() },
+        { "TypeParameter", "System.UInt16" }
     };
  
     Generate("GenericClass.ttinclude", parameters);

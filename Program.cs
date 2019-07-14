@@ -12,6 +12,6 @@ namespace T4GenericsExample
             Print(new UInt8Class().ReturnResult());
         }
 
-        static void Print(object @object) => Console.WriteLine($"{@object.GetType()} = {@object}");
+        static void Print(object @object) => Console.WriteLine($"{@object.GetType()}: 1 + 3 = {@object}");
     }
 }
