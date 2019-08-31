@@ -8,9 +8,7 @@
     public void Generate(string baseTemplatePath, IDictionary<string, string> parameters)
     {
         var template = File.ReadAllText(this.Host.ResolvePath(baseTemplatePath));
-
         template = template.Replace(ParametersInjectionPattern, GenerateParametersAssignmentControlBlock(parameters));
-
         this.Write(new Engine().ProcessTemplate(template, this.Host).Trim());
     }
 
@@ -18,10 +16,10 @@
     {
         var sb = new StringBuilder();
         sb.Append('<').Append('#').Append(' ');
-    
         foreach (var parameter in parameters)
+		{
             sb.Append($"{parameter.Key} = \"{parameter.Value}\";");
-
+		}
         sb.Append(' ').Append('#').Append('>');
         return sb.ToString();
     }
