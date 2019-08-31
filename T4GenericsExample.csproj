@@ -29,45 +29,29 @@
   <ItemGroup Condition="'$(MSBuildRuntimeType)'=='Full'">
     <None Update="UInt16Class.Generated.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UInt16Class.Generated.cs</LastGenOutput>
     </None>
     <None Update="UInt32Class.Generated.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UInt32Class.Generated.cs</LastGenOutput>
     </None>
     <None Update="UInt64Class.Generated.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UInt64Class.Generated.cs</LastGenOutput>
     </None>
     <None Update="UInt8Class.Generated.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UInt8Class.Generated.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(MSBuildRuntimeType)'=='Full'">
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(MSBuildRuntimeType)'=='Full'">
     <Compile Update="UInt16Class.Generated.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
       <DependentUpon>UInt16Class.Generated.tt</DependentUpon>
     </Compile>
     <Compile Update="UInt32Class.Generated.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
       <DependentUpon>UInt32Class.Generated.tt</DependentUpon>
     </Compile>
     <Compile Update="UInt64Class.Generated.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
       <DependentUpon>UInt64Class.Generated.tt</DependentUpon>
     </Compile>
     <Compile Update="UInt8Class.Generated.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
       <DependentUpon>UInt8Class.Generated.tt</DependentUpon>
     </Compile>
   </ItemGroup>
