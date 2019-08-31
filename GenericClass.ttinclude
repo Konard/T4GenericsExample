@@ -1,5 +1,7 @@
 ﻿<#@ template language="C#" #>
 <##>
+using System;
+
 namespace <#= Namespace #>
 {
     public class <#= ClassName #> : IGeneric<<#= TypeParameter #>>

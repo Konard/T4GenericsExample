@@ -1,8 +1,10 @@
 ﻿
+using System;
+
 namespace T4GenericsExample
 {
-    public class UInt8Class : IGeneric<System.Byte>
+    public class UInt8Class : IGeneric<Byte>
     {
-        public System.Byte ReturnResult() => 1 + 3;
+        public Byte ReturnResult() => 1 + 3;
     }
 }

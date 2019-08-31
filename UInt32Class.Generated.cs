@@ -1,8 +1,10 @@
 ﻿
+using System;
+
 namespace T4GenericsExample
 {
-    public class UInt32Class : IGeneric<System.UInt32>
+    public class UInt32Class : IGeneric<UInt32>
     {
-        public System.UInt32 ReturnResult() => 1 + 3;
+        public UInt32 ReturnResult() => 1 + 3;
     }
 }

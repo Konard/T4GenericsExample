@@ -7,7 +7,7 @@
     {
         { "Namespace", "T4GenericsExample" },
         { "ClassName", GetTemplateName() },
-        { "TypeParameter", "System.UInt16" }
+        { "TypeParameter", "UInt16" }
     };
  
     Generate("GenericClass.ttinclude", parameters);
