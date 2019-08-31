@@ -5,14 +5,12 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
-  <!-- T4 build support for .NET Core (Begin) -->
-
-  <ItemGroup Condition="'$(MSBuildRuntimeType)'=='Core'">
+  <ItemGroup>
     <DotNetCliToolReference Include="dotnet-t4-project-tool" Version="2.0.5" />
     <TextTemplate Include="**\*.Generated.tt" />
   </ItemGroup>
 
-  <Target Name="TextTemplateTransform" BeforeTargets="BeforeBuild" Condition="'$(MSBuildRuntimeType)'=='Core'">
+  <Target Name="TextTemplateTransform" BeforeTargets="BeforeBuild">
     <ItemGroup>
       <Compile Remove="**\*.cs" />
     </ItemGroup>
@@ -22,26 +20,7 @@
     </ItemGroup>
   </Target>
 
-  <!-- T4 build support for .NET Core (End) -->
-
-  <!-- T4 build support for Visual Studio (Begin) -->
-
-  <ItemGroup Condition="'$(MSBuildRuntimeType)'=='Full'">
-    <None Update="UInt16Class.Generated.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </None>
-    <None Update="UInt32Class.Generated.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </None>
-    <None Update="UInt64Class.Generated.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </None>
-    <None Update="UInt8Class.Generated.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(MSBuildRuntimeType)'=='Full'">
+  <ItemGroup>
     <Compile Update="UInt16Class.Generated.cs">
       <DependentUpon>UInt16Class.Generated.tt</DependentUpon>
     </Compile>
@@ -55,20 +34,5 @@
       <DependentUpon>UInt8Class.Generated.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-
-  <PropertyGroup Condition="'$(MSBuildRuntimeType)'=='Full'">
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <!-- This is what will cause the templates to be transformed when the project is built (default is false) -->
-    <TransformOnBuild>true</TransformOnBuild>
-    <!-- Set to true to force overwriting of read-only output files, e.g. if they're not checked out (default is false) -->
-    <OverwriteReadOnlyOutputFiles>true</OverwriteReadOnlyOutputFiles>
-    <!-- Set to false to transform files even if the output appears to be up-to-date (default is true)  -->
-    <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
-  </PropertyGroup>
-
-  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" Condition="'$(MSBuildRuntimeType)'=='Full'" />
-  <Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" Condition="'$(MSBuildRuntimeType)'=='Full'" />
-
-  <!-- T4 build support for Visual Studio (End) -->
 
 </Project>
