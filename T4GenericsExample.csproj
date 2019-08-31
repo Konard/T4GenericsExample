@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="dotnet-t4-project-tool" Version="2.0.5" />
-    <TextTemplate Include="**\*.Generated.tt" />
+    <TextTemplate Include="**\*.tt" />
   </ItemGroup>
 
   <Target Name="TextTemplateTransform" BeforeTargets="BeforeBuild">
@@ -21,17 +21,17 @@
   </Target>
 
   <ItemGroup>
-    <Compile Update="UInt16Class.Generated.cs">
-      <DependentUpon>UInt16Class.Generated.tt</DependentUpon>
+    <Compile Update="UInt16Class.cs">
+      <DependentUpon>UInt16Class.tt</DependentUpon>
     </Compile>
-    <Compile Update="UInt32Class.Generated.cs">
-      <DependentUpon>UInt32Class.Generated.tt</DependentUpon>
+    <Compile Update="UInt32Class.cs">
+      <DependentUpon>UInt32Class.tt</DependentUpon>
     </Compile>
-    <Compile Update="UInt64Class.Generated.cs">
-      <DependentUpon>UInt64Class.Generated.tt</DependentUpon>
+    <Compile Update="UInt64Class.cs">
+      <DependentUpon>UInt64Class.tt</DependentUpon>
     </Compile>
-    <Compile Update="UInt8Class.Generated.cs">
-      <DependentUpon>UInt8Class.Generated.tt</DependentUpon>
+    <Compile Update="UInt8Class.cs">
+      <DependentUpon>UInt8Class.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

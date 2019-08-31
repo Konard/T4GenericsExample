@@ -4,7 +4,7 @@ namespace T4GenericsExample
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Print(new UInt64Class().ReturnResult());
             Print(new UInt32Class().ReturnResult());
