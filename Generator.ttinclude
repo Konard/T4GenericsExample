@@ -17,9 +17,9 @@
         var sb = new StringBuilder();
         sb.Append('<').Append('#').Append(' ');
         foreach (var parameter in parameters)
-		{
+        {
             sb.Append($"{parameter.Key} = \"{parameter.Value}\";");
-		}
+        }
         sb.Append(' ').Append('#').Append('>');
         return sb.ToString();
     }
